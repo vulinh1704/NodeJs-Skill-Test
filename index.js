@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const synBitcoin = require("./src/cronjob/synBitcoin.js");
 const bitcoinService = require("./src/service/BitcoinService.js");
+const router = require("./src/router/router.js");
 const app = express();
 
 mongoose.connect(process.env.DB_URL).then(() => {
@@ -17,9 +18,7 @@ synBitcoin().then(() => {
     console.log(err.message + "__");
 });
 
-bitcoinService.getLatestBTCData().then((data) => {
-    console.log(data);
-})
+app.use('', router)
 
 app.listen(process.env.SERVER_PORT, () => {
     console.log(`Server is running: ${process.env.SERVER_URL}`)
