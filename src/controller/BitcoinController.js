@@ -10,8 +10,7 @@ class BitcoinController {
         bitcoin = {
             mins: bitcoin.mins,
             price: bitcoin.price,
-            closeTime: bitcoin.closeTime,
-            timeAt: bitcoin.timeAt
+            closeTime: bitcoin.closeTime
         }
         return res.status(200).json(bitcoin);
     }
