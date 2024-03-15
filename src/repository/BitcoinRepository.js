@@ -1,9 +1,16 @@
-const Bitcoin = require("../model/Bitcoin");
+const Bitcoin = require("../model/Bitcoin.js");
 
 class BitcoinRepository {
-    save = async (newBitcoin) => {
+    constructor() {
+    }
+
+    save = async (newBitcoin) =>  {
         return Bitcoin.create(newBitcoin);
+    }
+
+    getLatestBTCData = async () => {
+        return Bitcoin.findOne().sort({timeAt: -1}).limit(1);
     }
 }
 
-export default new BitcoinRepository();
+module.exports = new BitcoinRepository();

@@ -9,4 +9,5 @@ const BitcoinSchema = new Schema({
 });
 
 const Bitcoin = model('Bitcoin', BitcoinSchema);
-export default Bitcoin;
+
+module.exports = Bitcoin;

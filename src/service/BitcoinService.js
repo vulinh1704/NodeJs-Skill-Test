@@ -1,13 +1,17 @@
-const BitcoinRepository = import("../repository/BitcoinRepository");
+const bitcoinRepository = require("../repository/BitcoinRepository.js");
 
 class BitcoinService {
     constructor() {
-        this.bitcoinService = new BitcoinRepository();
+        this.bitcoinService = bitcoinRepository;
     }
 
     save = async (newBitcoin) => {
         return this.bitcoinService.save(newBitcoin);
     }
+
+    getLatestBTCData = async () => {
+        return this.bitcoinService.getLatestBTCData();
+    }
 }
 
-export default new BitcoinService();
+module.exports = new BitcoinService();
