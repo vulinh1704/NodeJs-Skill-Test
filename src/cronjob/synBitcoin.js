@@ -14,7 +14,7 @@ const synBitcoin = async () => {
 }
 
 const cronjob = new CronJob(
-    ' 15 * * *',
+    '* 15 * * *',
     synBitcoin,
     null,
     true,
