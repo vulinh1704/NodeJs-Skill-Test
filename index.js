@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const synBitcoin = require("./src/cronjob/synBitcoin.js");
+const cronjob = require("./src/cronjob/synBitcoin.js");
 const bitcoinService = require("./src/service/BitcoinService.js");
 const router = require("./src/router/router.js");
 const app = express();
@@ -11,12 +11,6 @@ mongoose.connect(process.env.DB_URL).then(() => {
 }).catch((error) => {
     console.log(error.message);
 })
-
-synBitcoin().then(() => {
-    console.log("BTC price synchronization successful!")
-}).catch((err) => {
-    console.log(err.message + "__");
-});
 
 app.use('', router)
 
